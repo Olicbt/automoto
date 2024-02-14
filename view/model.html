@@ -1,0 +1,72 @@
+<h3>Model</h3>
+
+
+<div class="container" style="width:50%">
+<form name="myForm">
+
+  <div class="form-group">
+    <label for="modelIme">Model:</label>
+	<div class="alert alert-danger" ng-show="myForm.modelIme.$invalid && myForm.modelIme.$dirty">Insert model</div>
+    <input type="text" class="form-control" id="modelIme" name="modelIme" ng-model="modelIme" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="opis">Description:</label>
+    <input type="text" class="form-control" id="opis" name="opis" ng-model="opis">
+  </div>
+  
+  <div class="form-group">
+    <label for="godina">Year:</label>
+	<div class="alert alert-danger" ng-show="myForm.godina.$invalid && myForm.godina.$dirty">Insert year</div>
+    <input type="number" class="form-control" id="godina" name="godina" ng-model="godina" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="cena">Price:</label>
+	<div class="alert alert-danger" ng-show="myForm.cena.$invalid && myForm.cena.$dirty">Insert price</div>
+    <input type="number" class="form-control" id="cena" name="cena" ng-model="cena" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" ng-click="details_model_fun(modelIme, opis, godina, cena)">Submit</button>
+</form>
+</div>
+<br>
+
+
+
+<div class="table-responsive">
+<input class="form-control" id="myInput" type="text" placeholder="Search...">
+<br>
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+   
+	<th>Model</th>
+	<th>Description</th>
+	<th>Year</th>
+	<th>Price</th>
+	<th>DELETE</th>
+	</tr>
+  </thead>
+  <tbody id="myTable">
+  <tr ng-repeat="modeli in model">
+    
+	<td>{{modeli.modelIme}}</td>
+	<td>{{modeli.opis}}</td>
+	<td>{{modeli.godina}}</td>
+	<td>{{modeli.cena}}</td>
+	<td><button ng-click="deleteRow('model',modeli.model_id)"i class="fas fa-trash-alt"></i></td>
+	</tr>
+  </tbody>
+</table>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

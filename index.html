@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <title>AutoMoto</title>
+	 <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+  <!--Bootstrap-->
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<!--ikoni-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+
+    <!--AngularJS-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/routes.js"></script>
+   </head>
+   
+   <body ng-app="myApp" ng-controller="myCtrl">
+   
+   <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-double-up"></i></button>
+   
+   <header>
+   
+   <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
+	<div class="container">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#!/"><span>Auto</span> Moto</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#!kupuvac">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!marka">Brand</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!model">Model</a>
+      </li> 
+	  <li class="nav-item">
+        <a class="nav-link" href="#!prodazba">Sale</a>
+      </li> 
+	  
+    
+    </ul>
+  </div>
+	</div>
+</nav>
+
+<div class="banner">
+	
+	<div class="banner-text">
+	<div class="banner-heading">
+	Glad to see you here !
+	</div>
+	<div class="banner-sub-heading">
+	Feel the burn of gasoline and tyres
+	</div>
+	<button type="button" class="btn btn-warning text-dark btn-banner">Get started</button>
+	</div>
+	
+</div>
+
+   </header>
+   
+   <div class="container-fluid">
+   <div class="row">
+   <div class="col-sm-12">
+   
+   <div ng-view></div>
+   
+   </div>
+   </div>
+   </div>
+   
+   <div class="jumbotron text-center" style="margin-bottom:0">
+  <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
+	      
+	      <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a> </li>   
+	      <li> <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a> </li>
+	      <li> <a href="https://twitter.com/"><i class="fab fa-x-twitter"></i></a> </li>
+	      <li> <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a></li>  
+	      <li> <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li> 
+	  	</ul>
+</div>
+<script>
+	$(document).on("scroll", function(){
+		if
+      ($(document).scrollTop() > 86){
+		  $("#banner").addClass("shrink");
+		}
+		else
+		{
+			$("#banner").removeClass("shrink");
+		}
+	});
+	  </script>
+	  
+	  <script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+   </body>
+</html>

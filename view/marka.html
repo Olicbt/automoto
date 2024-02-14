@@ -1,0 +1,65 @@
+<h3>Brand</h3>
+
+
+<div class="container" style="width:50%">
+<form name="myForm">
+
+  <div class="form-group">
+    <label for="markaIme">Brand:</label>
+	<div class="alert alert-danger" ng-show="myForm.markaIme.$invalid && myForm.markaIme.$dirty">Insert brand min 3</div>
+    <input type="text" class="form-control" id="markaIme" name="markaIme" ng-model="markaIme" ng-minlength="3" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="drzava">Country:</label>
+	<div class="alert alert-danger" ng-show="myForm.drzava.$invalid && myForm.drzava.$dirty">Insert country</div>
+    <input type="text" class="form-control" id="drzava" name="drzava" ng-model="drzava" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="grad">City:</label>
+	<div class="alert alert-danger" ng-show="myForm.grad.$invalid && myForm.grad.$dirty">Insert city</div>
+    <input type="text" class="form-control" id="grad" name="grad" ng-model="grad" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" ng-click="details_marka_fun(markaIme, drzava, grad)">Submit</button>
+</form>
+</div>
+<br>
+
+
+
+<div class="table-responsive">
+<input class="form-control" id="myInput" type="text" placeholder="Search...">
+<br>
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    
+	<th>Brand</th>
+	<th>Country</th>
+	<th>City</th>
+	<th>DELETE</th>
+	</tr>
+  </thead>
+  <tbody id="myTable">
+  <tr ng-repeat="marki in marka">
+   
+	<td>{{marki.markaIme}}</td>
+	<td>{{marki.drzava}}</td>
+	<td>{{marki.grad}}</td>
+	<td><button ng-click="deleteRow('marka',marki.marka_id)"i class="fas fa-trash-alt"></i></td>
+	</tr>
+  </tbody>
+</table>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

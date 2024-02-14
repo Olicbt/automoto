@@ -1,0 +1,84 @@
+<h3>Sale</h3>
+
+
+<div class="container" style="width:50%">
+<form name="myForm">
+
+  <div class="form-group">
+    <label for="kupuvac_id">Name of client:</label>
+    <select class="form-control" id="kupuvac_id" name="kupuvac_id" ng-model="kupuvac_id">
+	<option ng-repeat="kupuvaci in kupuvac" value="{{kupuvaci.kupuvac_id}}">{{kupuvaci.ime}} {{kupuvaci.adresa}}</option>
+	</select>
+  </div>
+  
+  <div class="form-group">
+    <label for="marka_id">Brand:</label>
+    <select class="form-control" id="marka_id" name="marka_id" ng-model="marka_id">
+     <option ng-repeat="marki in marka" value="{{marki.marka_id}}">{{marki.markaIme}} {{marki.drzava}}</option>
+	</select> 
+  </div>
+  
+  <div class="form-group">
+    <label for="model_id">Model:</label>
+    <select class="form-control" id="model_id" name="model_id" ng-model="model_id">
+	<option ng-repeat="modeli in model" value="{{modeli.model_id}}">{{modeli.modelIme}} opis-{{modeli.opis}} god-{{modeli.godina}} cena-{{modeli.cena}}</option>
+	</select>
+  </div>
+  
+  <div class="form-group">
+    <label for="data">Date:</label>
+	<div class="alert alert-danger" ng-show="myForm.data.$invalid && myForm.data.$dirty">Insert date</div>
+    <input type="text" class="form-control" id="data" name="data" ng-model="data" placeholder="yyyy-mm-dd" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" ng-click="details_prodazba_fun(kupuvac_id, marka_id, model_id, data)">Submit</button>
+</form>
+</div>
+<br>
+
+
+
+<div class="table-responsive">
+<input class="form-control" id="myInput" type="text" placeholder="Search...">
+<br>
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    
+	<th>Name</th>
+	<th>Address</th>
+	<th>Brand</th>
+	<th>Model</th>
+	<th>Description</th>
+	<th>Year</th>
+	<th>Price</th>
+	<th>Date</th>
+	<th>DELETE</th>
+	</tr>
+  </thead>
+  <tbody id="myTable">
+  <tr ng-repeat="prodazbi in prodazba">
+    
+	<td>{{prodazbi.ime}}</td>
+	<td>{{prodazbi.adresa}}</td>
+	<td>{{prodazbi.markaIme}}</td>
+	<td>{{prodazbi.modelIme}}</td>
+	<td>{{prodazbi.opis}}</td>
+	<td>{{prodazbi.godina}}</td>
+	<td>{{prodazbi.cena}}</td>
+	<td>{{prodazbi.data}}</td>
+	<td><button ng-click="deleteRow('prodazba',prodazbi.prodazba_id)"i class="fas fa-trash-alt"></i></td>
+	</tr>
+  </tbody>
+</table>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

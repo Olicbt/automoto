@@ -1,0 +1,65 @@
+<h3>Clients</h3>
+
+<div class="container" style="width:50%">
+<form name="myForm">
+
+  <div class="form-group">
+    <label for="ime">Name:</label>
+	<div class="alert alert-danger" ng-show="myForm.ime.$invalid && myForm.ime.$dirty">Insert name</div>
+    <input type="text" class="form-control" id="ime" name="ime" ng-model="ime" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="adresa">Address:</label>
+	<div class="alert alert-danger" ng-show="myForm.adresa.$invalid && myForm.adresa.$dirty">Insert address</div>
+    <input type="text" class="form-control" id="adresa" name="adresa" ng-model="adresa" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="telefon">Phone:</label>
+	<div class="alert alert-danger" ng-show="myForm.telefon.$invalid && myForm.telefon.$dirty">Insert phone</div>
+    <input type="number" class="form-control" id="telefon" name="telefon" ng-model="telefon" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" ng-click="details_kupuvac_fun(ime, adresa, telefon)">Submit</button>
+</form>
+</div>
+<br>
+
+
+
+
+<div class="table-responsive">
+<input class="form-control" id="myInput" type="text" placeholder="Search...">
+<br>
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    
+	<th>Name</th>
+	<th>Address</th>
+	<th>Phone</th>
+	<th>DELETE</th>
+	</tr>
+  </thead>
+  <tbody id="myTable">
+  <tr ng-repeat="kupuvaci in kupuvac">
+   
+	<td>{{kupuvaci.ime}}</td>
+	<td>{{kupuvaci.adresa}}</td>
+	<td>{{kupuvaci.telefon}}</td>
+	<td><button ng-click="deleteRow('kupuvac',kupuvaci.kupuvac_id)"i class="fas fa-trash-alt"></i></td>
+	</tr>
+  </tbody>
+</table>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
